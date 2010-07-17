@@ -1,0 +1,38 @@
+dev_pgsql: &dev_pgsql
+  adapter: postgresql
+  database: clh_dev
+  username: root
+  password: ""
+
+dev_mysql: &dev_mysql
+  adapter: mysql
+  database: clh_dev
+  username: root
+  password: 
+
+test_pgsql: &test_pgsql
+  adapter: postgresql
+  database: clh_test
+  username: root
+  password: ""
+
+test_mysql: &test_mysql
+  adapter: mysql
+  database: clh_test
+  username: root
+  password:
+  
+# use *dev_pgsql or *dev_mysql, depending on which db engine you want
+development:
+  <<: *dev_mysql
+
+# Warning: The database defined as 'test' will be erased and
+# re-generated from your development database when you run 'rake'.
+# Do not set this db to the same as development or production.
+test:
+  <<: *test_mysql
+
+# This section is rewritten by rpwn. For development, it's pointing to the
+# -dev database, so we can run the loader scripts in production mode.
+production:
+  <<: *dev_mysql

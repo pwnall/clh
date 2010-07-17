@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Url:</b>
+  <%= @page_fetch.url %>
+</p>
+
+<p>
+  <b>Expires at:</b>
+  <%= @page_fetch.expires_at %>
+</p>
+
+<p>
+  <b>Contents:</b>
+  <%= @page_fetch.contents %>
+</p>
+
+<%= link_to 'Back', page_fetches_path %>

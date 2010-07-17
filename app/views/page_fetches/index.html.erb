@@ -1,0 +1,22 @@
+<h1>Page Fetches</h1>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Expires at</th>
+    <th>Size</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @page_fetches.each do |page_fetch| %>
+  <tr>
+    <td><%= page_fetch.url %></td>
+    <td><%= page_fetch.expires_at %></td>
+    <td><%= page_fetch.contents.length %></td>
+    <td><%= link_to 'Show', page_fetch %></td>
+    <td><%= link_to 'Destroy', page_fetch, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

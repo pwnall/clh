@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Price:</b>
+  <%= @listing.price %>
+</p>
+
+<p>
+  <b>Rooms:</b>
+  <%= @listing.rooms %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @listing.location %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @listing.title %>
+</p>
+
+<p>
+  <b>Posted at:</b>
+  <%= @listing.posted_at %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @listing.cl_url %>
+</p>
+
+<%= link_to 'Back', listings_path %>

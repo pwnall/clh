@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  price: 1
+  rooms: 1
+  available_at: 2010-07-16 23:15:11
+  cl_url: MyString
+  cl_title: MyString
+
+two:
+  price: 1
+  rooms: 1
+  available_at: 2010-07-16 23:15:11
+  cl_url: MyString
+  cl_title: MyString

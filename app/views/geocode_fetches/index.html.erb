@@ -1,0 +1,22 @@
+<h1>Listing geocode_fetches</h1>
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th>City</th>
+    <th>Response</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @geocode_fetches.each do |geocode_fetch| %>
+  <tr>
+    <td><%= geocode_fetch.location %></td>
+    <td><%= geocode_fetch.city %></td>
+    <td><%= geocode_fetch.response.to_json %></td>
+    <td><%= link_to 'Show', geocode_fetch %></td>
+    <td><%= link_to 'Destroy', geocode_fetch, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>

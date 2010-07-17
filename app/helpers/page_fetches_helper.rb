@@ -1,0 +1,2 @@
+module PageFetchesHelper
+end

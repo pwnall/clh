@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Location:</b>
+  <%= @geocode_fetch.location %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @geocode_fetch.city %>
+</p>
+
+<p>
+  <b>Response:</b>
+  <%= @geocode_fetch.response.to_json %>
+</p>
+
+<%= link_to 'Back', geocode_fetches_path %>
