@@ -13,7 +13,7 @@ END_USAGE
   exit
 end
 
-ENV['RAILS_ENV'] ||= 'development'
+ENV['RAILS_ENV'] ||= 'production'
 page_url = ARGV[0]
 page_limit = ARGV[1] && ARGV[1].to_i
 

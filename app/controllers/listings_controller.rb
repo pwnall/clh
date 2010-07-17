@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.xml
   def index    
-    @listings = Listing.all
+    @listing_count = Listing.count
 
     respond_to do |format|
       format.html # index.html.erb
