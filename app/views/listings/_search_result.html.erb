@@ -2,7 +2,9 @@
   <div class="header">
     <span class="price">$<%= listing.price %></span>
     <span class="rooms"><%= pluralize listing.rooms, 'room' %></span>
-    <span class="location"><%= google_maps_link listing.location %></span>    
+    <span class="location">
+      <%= google_maps_link listing.location_query, listing.location %>
+    </span>    
   </div>
   <div class="description">
     <%= listing.title %>

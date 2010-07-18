@@ -9,6 +9,11 @@ class Listing < ActiveRecord::Base
     self.lat, self.lng = geocode[:lat], geocode[:lng]
   end
   
+  def location_query
+    return location if / us^/ =~ location
+    [location, city].join ' near '
+  end
+  
   def self.for_url(url)
     where(:cl_url => url).first || new(:cl_url => url)
   end

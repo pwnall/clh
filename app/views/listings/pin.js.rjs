@@ -1,1 +1,1 @@
-page['search_result_listing_' + @listing.id.to_s].fade
+page['search_result_listing_' + @listing.id.to_s].fade :duration => 0.3

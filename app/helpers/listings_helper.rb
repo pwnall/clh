@@ -8,7 +8,8 @@ module ListingsHelper
         enable_listing_search && ListingPin.where('score > 0').count == 0
   end
   
-  def google_maps_link(location)
-    link_to location, "http://maps.google.com?q=loc:#{URI.encode location}"
+  def google_maps_link(location, caption = nil)
+    link_to caption || location,
+            "http://maps.google.com?q=loc:#{URI.encode location}"
   end
 end
