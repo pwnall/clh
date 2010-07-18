@@ -9,6 +9,9 @@ module ListingPinsHelper
   end
   
   def pin_score_description(score)
-    {-1 => 'Hidden', 1 => 'Meh', 2 => 'Like', 3 => 'Love'}[score.to_i]
+    {
+      -2 => 'Scam', -1 => 'Hidden',
+      1 => 'Meh', 2 => 'Like', 3 => 'Love'
+    }[score.to_i]
   end  
 end

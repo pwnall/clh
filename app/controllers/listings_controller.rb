@@ -28,7 +28,7 @@ class ListingsController < ApplicationController
       rel = rel.where('rooms <= ?', params[:rooms_max].to_i)
     end
     @listings = rel.all.select do |listing|
-      next false if listing.pin && listing.pin.hide?
+      next false if listing.pin
 
       room_price = listing.price / listing.rooms.to_f
       if !params[:room_price_max].blank? &&

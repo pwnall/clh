@@ -12,6 +12,7 @@
     <%= link_to listing.cl_url, listing.cl_url %>    
   </div>
   <div class="actions">
+    <%= link_to 'Scam', pin_listing_path(listing, :score => -2), :method => :put, :remote => true %>
     <%= link_to 'Hide', pin_listing_path(listing, :score => -1), :method => :put, :remote => true %>
     <%= link_to 'Meh', pin_listing_path(listing, :score => 1), :method => :put, :remote => true %>
     <%= link_to 'Like', pin_listing_path(listing, :score => 2), :method => :put, :remote => true %>
