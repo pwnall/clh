@@ -1,4 +1,6 @@
 Clh::Application.routes.draw do
+  resources :listing_pins
+
   resources :scrape_orders do
     member { post :run }
   end
@@ -9,6 +11,7 @@ Clh::Application.routes.draw do
 
   resources :listings do
     collection { get :search }
+    member { put :pin }
   end
 
   # The priority is based upon order of creation:
@@ -60,7 +63,7 @@ Clh::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "listings#index"
+  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 

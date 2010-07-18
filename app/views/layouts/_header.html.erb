@@ -1,0 +1,30 @@
+<div id="header">
+  <h1>
+    CraigsList Housing Helper
+    <ol>
+      <% if enable_scrape_orders %>
+      <li class="<%= emphasize_scrape_orders ? 'emphasized' : '' %>">
+        <%= link_to 'Scrape Craigslist', scrape_orders_path %>
+      </li>
+      <% else %>
+      <li class="disabled">Scrape Craigslist</li>
+      <% end %>
+
+      <% if enable_listing_search %>
+      <li class="<%= emphasize_listing_search ? 'emphasized' : '' %>">
+        <%= link_to 'Search Listings', listings_path %>
+      </li>
+      <% else %>
+      <li class="disabled">Search Listings</li>
+      <% end %>
+
+      <% if enable_listing_pins %>
+      <li class="<%= emphasize_listing_pins ? 'emphasized' : '' %>">
+        <%= link_to 'Pursue Listings', listing_pins_path %>
+      </li>
+      <% else %>
+      <li class="disabled">Pursue Listings</li>
+      <% end %>
+    </ol>
+  </h1>  
+</div>

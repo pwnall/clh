@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100718005836) do
+ActiveRecord::Schema.define(:version => 20100718025129) do
 
   create_table "geocode_fetches", :force => true do |t|
     t.string   "location",   :limit => 128, :null => false
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20100718005836) do
   end
 
   add_index "geocode_fetches", ["location", "city"], :name => "index_geocode_fetches_on_location_and_city", :unique => true
+
+  create_table "listing_pins", :force => true do |t|
+    t.integer "listing_id", :null => false
+    t.float   "score",      :null => false
+  end
+
+  add_index "listing_pins", ["listing_id"], :name => "index_listing_pins_on_listing_id", :unique => true
+  add_index "listing_pins", ["score"], :name => "index_listing_pins_on_score"
 
   create_table "listings", :force => true do |t|
     t.string   "cl_url",      :limit => 128,                                 :null => false

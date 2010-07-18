@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 10px;
+}
+
+#page_wrapper {
+  margin: 0;
+  padding: 0;
+  min-width: 1000px;
+}
+
+#header {
+  padding: 0 2em;
+}
+
+#content_wrapper {
+  margin: 0 auto;
+  padding: 5px;
+  width: 1000px;
+  overflow: hidden; 
+}
+#content {
+  margin: 0;
+  padding: 0;
+}
+
+#footer {  
+  font-size: 1.3em;
+}
+
+#content {
+  font-size: 10pt;
+  line-height: 18px;
+}

@@ -20,26 +20,33 @@ class ListingsController < ApplicationController
       radius = params[:radius].to_f
     end
     
-    rel = Listing
-    if params[:rooms_min]
+    rel = Listing.includes(:pin).order('posted_at DESC')
+    unless params[:rooms_min].blank?
       rel = rel.where('rooms >= ?', params[:rooms_min].to_i)
     end
-    if params[:rooms_max]
+    unless params[:rooms_max].blank?
       rel = rel.where('rooms <= ?', params[:rooms_max].to_i)
     end
     @listings = rel.all.select do |listing|
-      if params[:room_price_max]
-        if (listing.price / listing.rooms.to_f) >  params[:room_price_max].to_f
-          next false
-        end
+      next false if listing.pin && listing.pin.hide?
+
+      room_price = listing.price / listing.rooms.to_f
+      if !params[:room_price_max].blank? &&
+          room_price > params[:room_price_max].to_f
+        next false
       end
+      if !params[:room_price_min].blank? &&
+         room_price < params[:room_price_min].to_f
+        next false
+      end
+      
       if location
         if radius < listing.distance_to(location, :units => :miles)
           next false
         end
       end
       true         
-    end      
+    end
 
     respond_to do |format|
       format.html # search.html.erb
@@ -58,53 +65,20 @@ class ListingsController < ApplicationController
     end
   end
 
-  # GET /listings/new
-  # GET /listings/new.xml
-  def new
-    @listing = Listing.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @listing }
-    end
-  end
-
-  # GET /listings/1/edit
-  def edit
+  # PUT /listings/1/pin?score=-1
+  def pin
     @listing = Listing.find(params[:id])
-  end
-
-  # POST /listings
-  # POST /listings.xml
-  def create
-    @listing = Listing.new(params[:listing])
-
+    if @listing.pin
+      @listing.pin.update_attributes! :score => params[:score]
+    else
+      @listing.pin = ListingPin.create! :listing => @listing, :score => params[:score]
+    end
+    
     respond_to do |format|
-      if @listing.save
-        format.html { redirect_to(@listing, :notice => 'Listing was successfully created.') }
-        format.xml  { render :xml => @listing, :status => :created, :location => @listing }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @listing.errors, :status => :unprocessable_entity }
-      end
+      format.js # pin.js.rjs
     end
   end
-
-  # PUT /listings/1
-  # PUT /listings/1.xml
-  def update
-    @listing = Listing.find(params[:id])
-
-    respond_to do |format|
-      if @listing.update_attributes(params[:listing])
-        format.html { redirect_to(@listing, :notice => 'Listing was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @listing.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
+    
 
   # DELETE /listings/1
   # DELETE /listings/1.xml

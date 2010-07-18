@@ -1,8 +1,8 @@
-<div class="search_result">
+<div class="search_result" id="search_result_listing_<%= listing.id %>">
   <div class="header">
     <span class="price">$<%= listing.price %></span>
     <span class="rooms"><%= pluralize listing.rooms, 'room' %></span>
-    <span class="location"><%= listing.location %></span>    
+    <span class="location"><%= google_maps_link listing.location %></span>    
   </div>
   <div class="description">
     <%= listing.title %>
@@ -12,7 +12,9 @@
     <%= link_to listing.cl_url, listing.cl_url %>    
   </div>
   <div class="actions">
-    <%= link_to 'Show', listing %>
-    <%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %>    
+    <%= link_to 'Hide', pin_listing_path(listing, :score => -1), :method => :put, :remote => true %>
+    <%= link_to 'Meh', pin_listing_path(listing, :score => 1), :method => :put, :remote => true %>
+    <%= link_to 'Like', pin_listing_path(listing, :score => 2), :method => :put, :remote => true %>
+    <%= link_to 'Love', pin_listing_path(listing, :score => 3), :method => :put, :remote => true %>
   </div>
 </div>

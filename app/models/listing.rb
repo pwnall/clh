@@ -1,6 +1,8 @@
 class Listing < ActiveRecord::Base
   acts_as_mappable
   
+  has_one :pin, :class_name => 'ListingPin', :dependent => :destroy
+  
   def location=(new_location)
     super
     geocode = GeocodeFetch.get location, city

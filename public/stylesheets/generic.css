@@ -1,0 +1,16 @@
+th {
+  text-align: left;
+}
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+table.form tr:nth-child(odd) {
+  background: inherit;
+}
+table.form tr:nth-child(even) {
+  background: inherit;
+}

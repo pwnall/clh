@@ -1,0 +1,8 @@
+<h2>Rated Listings</h2>
+
+<% @listing_pins.keys.sort.reverse.each do |score| %>
+<h3><%= pin_score_description(score) %></h3>
+<% @listing_pins[score].each do |listing_pin| %>
+<%= render 'listings/search_result', :listing => listing_pin.listing %>
+<% end %>
+<% end %>

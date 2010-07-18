@@ -1,0 +1,31 @@
+#header {
+  border-bottom: 1px solid #8080FF;
+  vertical-align: baseline;
+}
+
+h1 {
+  font-size: 11pt;
+  margin: 0;
+}
+h1 ol {
+  display: inline-block;
+  margin: 0;
+  font-size: 11pt; 
+  font-weight: normal;
+}
+h1 ol li {
+  float: left;
+  padding-right: 40px;
+  margin: 0;
+}
+h1 ol li.emphasized {
+  font-weight: bold;
+}
+
+#header a {
+  text-decoration: none;
+}
+
+h2 {
+  margin: 0 0 0.5em 0;
+}

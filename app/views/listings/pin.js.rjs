@@ -1,0 +1,1 @@
+page['search_result_listing_' + @listing.id.to_s].fade
