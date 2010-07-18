@@ -11,11 +11,8 @@ This needs the pre-release version of bundler to install Rails edge.
 
 Database setup (MySQL needed).
    rake db:migrate
-   
-Populate the database using the desired housing page from your city.
-  script/populator.rb http://boston.craigslist.org/gbs/aap/
 
 Run the server.
-  rails s
+  rails s -e production -p 8090
   
-Point your browser to http://localhost:3000 to play.
+Point your browser to http://localhost:8090 to play.
