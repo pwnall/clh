@@ -1,4 +1,8 @@
 Clh::Application.routes.draw do
+  resources :scrape_orders do
+    member { post :run }
+  end
+
   resources :geocode_fetches
 
   resources :page_fetches

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start url:</b>
+  <%= @scrape_order.start_url %>
+</p>
+
+<p>
+  <b>Page depth:</b>
+  <%= @scrape_order.page_depth %>
+</p>
+
+
+<%= link_to 'Edit', edit_scrape_order_path(@scrape_order) %> |
+<%= link_to 'Back', scrape_orders_path %>

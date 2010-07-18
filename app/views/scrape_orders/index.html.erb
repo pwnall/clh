@@ -1,0 +1,30 @@
+<h1>Scrape Orders</h1>
+
+<table>
+  <tr>
+    <th>Start url</th>
+    <th>Page depth</th>
+    <th>Last ran at</th>
+    <th>Completion time</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scrape_orders.each do |scrape_order| %>
+  <tr>
+    <td><%= scrape_order.start_url %></td>
+    <td><%= scrape_order.page_depth %></td>
+    <td><%= scrape_order.ran_last_at ?
+                scrape_order.ran_last_at.strftime('%m/%d %H:%M') : 'never' %></td>
+    <td><%= scrape_order.last_runtime %></td>
+    <td><%= link_to 'Run', run_scrape_order_path(scrape_order), :method => :post %></td>
+    <td><%= link_to 'Edit', edit_scrape_order_path(scrape_order) %></td>
+    <td><%= link_to 'Destroy', scrape_order, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Scrape order', new_scrape_order_path %>

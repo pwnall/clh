@@ -1,28 +1,5 @@
 <h1>Listings</h1>
 
-<table>
-  <tr>
-    <th>Price</th>
-    <th>Rooms</th>
-    <th>Location</th>
-    <th>Title</th>
-    <th>Posted at</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @listings.each do |listing| %>
-  <tr>
-    <td><%= listing.price %></td>
-    <td><%= listing.rooms %></td>
-    <td><%= listing.location %></td>
-    <td><%= listing.title %></td>
-    <td><%= listing.posted_at.strftime('%m/%d %H:%M') %></td>
-    <td><%= link_to listing.cl_url, listing.cl_url %></td>
-    <td><%= link_to 'Show', listing %></td>
-    <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<%= render 'listings/search_result', :listing => listing %>
 <% end %>
-</table>

@@ -1,0 +1,18 @@
+<div class="search_result">
+  <div class="header">
+    <span class="price">$<%= listing.price %></span>
+    <span class="rooms"><%= pluralize listing.rooms, 'room' %></span>
+    <span class="location"><%= listing.location %></span>    
+  </div>
+  <div class="description">
+    <%= listing.title %>
+  </div>
+  <div class="footer">
+    <span class="date"><%= listing.posted_at.strftime('%m/%d %H:%M') %></span>
+    <%= link_to listing.cl_url, listing.cl_url %>    
+  </div>
+  <div class="actions">
+    <%= link_to 'Show', listing %>
+    <%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %>    
+  </div>
+</div>

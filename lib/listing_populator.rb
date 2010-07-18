@@ -1,4 +1,8 @@
-class ListingPopulator  
+class ListingPopulator
+  def self.parser_hash
+    @@parser_hash ||= Digest::MD5.hexdigest File.read(__FILE__)
+  end  
+  
   def run(url, list_limit = 20)
     list_urls = [url]
     visited = Set.new([url])
@@ -18,7 +22,13 @@ class ListingPopulator
     end
   end
   
-  def process_post_page(url, anchor_text)
+  def process_post_page(url, anchor_text)    
+    listing = Listing.for_url(url)
+    return listing if listing.parser_hash == self.class.parser_hash
+    process_post_page! url, anchor_text
+  end
+  
+  def process_post_page!(url, anchor_text)
     page = Nokogiri::HTML fetch(url, 14.days)
     page_text = page.root.inner_text
 
@@ -101,6 +111,7 @@ class ListingPopulator
     end
     
     listing = Listing.for_url url
+    listing.parser_hash = self.class.parser_hash
     listing.price = price
     listing.rooms = rooms
     listing.city = clean_location city

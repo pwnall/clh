@@ -16,6 +16,16 @@
 </p>
 
 <p>
+  <b>City:</b>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <b>Latitude, longitude:</b>
+  <%= @listing.lat %>, <%= @listing.lng %>
+</p>
+
+<p>
   <b>Title:</b>
   <%= @listing.title %>
 </p>
@@ -26,8 +36,13 @@
 </p>
 
 <p>
-  <b>Url:</b>
-  <%= @listing.cl_url %>
+  <b>Original post:</b>
+  <%= link_to @listing.cl_url, @listing.cl_url %>
+</p>
+
+<p>
+  <b>Parser:</b>
+  <%= @listing.parser_hash %>
 </p>
 
 <%= link_to 'Back', listings_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100717075712) do
+ActiveRecord::Schema.define(:version => 20100718005836) do
 
   create_table "geocode_fetches", :force => true do |t|
     t.string   "location",   :limit => 128, :null => false
@@ -23,15 +23,16 @@ ActiveRecord::Schema.define(:version => 20100717075712) do
   add_index "geocode_fetches", ["location", "city"], :name => "index_geocode_fetches_on_location_and_city", :unique => true
 
   create_table "listings", :force => true do |t|
-    t.integer  "price",                                                    :null => false
-    t.integer  "rooms",                                                    :null => false
-    t.datetime "posted_at",                                                :null => false
-    t.string   "cl_url",    :limit => 128,                                 :null => false
-    t.string   "title",     :limit => 128,                                 :null => false
-    t.string   "location",  :limit => 128,                                 :null => false
-    t.string   "city",      :limit => 32,                                  :null => false
-    t.decimal  "lat",                      :precision => 14, :scale => 10, :null => false
-    t.decimal  "lng",                      :precision => 14, :scale => 10, :null => false
+    t.string   "cl_url",      :limit => 128,                                 :null => false
+    t.integer  "price",                                                      :null => false
+    t.integer  "rooms",                                                      :null => false
+    t.string   "title",       :limit => 128,                                 :null => false
+    t.datetime "posted_at",                                                  :null => false
+    t.string   "location",    :limit => 128,                                 :null => false
+    t.string   "city",        :limit => 32,                                  :null => false
+    t.decimal  "lat",                        :precision => 14, :scale => 10, :null => false
+    t.decimal  "lng",                        :precision => 14, :scale => 10, :null => false
+    t.string   "parser_hash", :limit => 64,                                  :null => false
   end
 
   add_index "listings", ["cl_url"], :name => "index_listings_on_cl_url", :unique => true
@@ -43,5 +44,14 @@ ActiveRecord::Schema.define(:version => 20100717075712) do
   end
 
   add_index "page_fetches", ["url"], :name => "index_page_fetches_on_url", :unique => true
+
+  create_table "scrape_orders", :force => true do |t|
+    t.string   "start_url",    :limit => 128, :null => false
+    t.integer  "page_depth",                  :null => false
+    t.datetime "ran_last_at"
+    t.float    "last_runtime"
+  end
+
+  add_index "scrape_orders", ["start_url"], :name => "index_scrape_orders_on_start_url", :unique => true
 
 end
