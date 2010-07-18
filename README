@@ -13,6 +13,6 @@ Database setup (MySQL needed).
    rake db:migrate
 
 Run the server.
-  rails s -e production -p 8090
+  unicorn -E production -p 8090
   
 Point your browser to http://localhost:8090 to play.
