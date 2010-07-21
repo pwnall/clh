@@ -118,6 +118,11 @@ class ListingPopulator
     listing.location = clean_location location
     listing.posted_at = posted_at
     listing.title = clean_title page_title
+    
+    # NOTE: the geocoder only fails if someone enters a bad query like "asdfgh"
+    #       as the exact location in Craigslist; this is usually spammy brokers,
+    #       so we'll ignore their listings.
+    return unless listing.lat && listing.lng 
     listing.save!
   end
   
